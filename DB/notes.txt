@@ -1,0 +1,2 @@
+Make sure to install postgres in your local machine
+Then import the sql file through command-line or pgAdmin
