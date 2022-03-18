@@ -34,4 +34,24 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
         return new ResponseEntity(exceptionResponse, HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(IncompleteFieldException.class)
+    public final ResponseEntity<Object> handleIncompleteFieldException
+            (IncompleteFieldException ex, WebRequest request) throws Exception {
+
+        ExceptionResponse exceptionResponse =
+                new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
+
+        return new ResponseEntity(exceptionResponse, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(AccountNotFoundException.class)
+    public final ResponseEntity<Object> handleAccountNotFoundException
+            (AccountNotFoundException ex, WebRequest request) throws Exception {
+
+        ExceptionResponse exceptionResponse =
+                new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
+
+        return new ResponseEntity(exceptionResponse, HttpStatus.NOT_FOUND);
+    }
+
 }
